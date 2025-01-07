@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { FlatList, ListRenderItem, RefreshControl } from 'react-native';
 
 import { AppButton } from 'components';
@@ -33,25 +33,10 @@ export const ChatScreen = observer(() => {
     onEndReached,
     onScroll,
     isAtBottom,
-    onLayout,
   } = useChatController();
 
-  const [itemHeights, setItemHeights] = useState<{ [key: string]: number }>({});
-
   const renderItem: ListRenderItem<ChatMessage> = useCallback(
-    ({ item }) => (
-      <Message
-        item={item}
-        onMessagePress={onMessagePress}
-        onLayout={event => {
-          const { height } = event.nativeEvent.layout;
-          setItemHeights(prevHeights => ({
-            ...prevHeights,
-            [item.id!]: height,
-          }));
-        }}
-      />
-    ),
+    ({ item }) => <Message item={item} onMessagePress={onMessagePress} />,
     [onMessagePress],
   );
 
@@ -74,15 +59,9 @@ export const ChatScreen = observer(() => {
         ref={flatListRef}
         keyExtractor={keyExtractor}
         data={messages}
-        // onScrollEndDrag={onScroll}
-        // onEndReached={onEndReached}
+        onScrollEndDrag={onScroll}
+        onEndReached={onEndReached}
         renderItem={renderItem}
-        // onLayout={onLayout}
-        // getItemLayout={(data, index) => {
-        //   const item = data?.[index];
-        //   const height = itemHeights[item?.id!] || 0;
-        //   return { length: height, offset: height * index, index };
-        // }}
         refreshControl={
           <RefreshControl refreshing={isLoading} onRefresh={reconnect} />
         }

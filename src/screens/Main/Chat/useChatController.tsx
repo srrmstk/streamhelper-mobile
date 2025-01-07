@@ -31,19 +31,11 @@ export const useChatController = () => {
     chatStore.connect();
   }, []);
 
-  const onLayout = () => {
+  useEffect(() => {
     if (isAtBottom) {
       flatListRef.current?.scrollToEnd({ animated: true });
     }
-  };
-
-  // useEffect(() => {
-  //   console.log(isAtBottom);
-
-  //   if (isAtBottom) {
-  //     flatListRef.current?.scrollToEnd({ animated: true });
-  //   }
-  // }, [chatStore.messages, isAtBottom]);
+  }, [chatStore.messages, isAtBottom]);
 
   const handleLogout = async () => {
     const isLoggedOut = await authStore.logout();
@@ -113,6 +105,5 @@ export const useChatController = () => {
     onEndReached,
     onScroll,
     isAtBottom,
-    onLayout,
   };
 };
