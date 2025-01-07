@@ -1,0 +1,27 @@
+{
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts", "./**/*.d.ts"],
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "baseUrl": "./src",
+    "paths": {
+      "*": ["*"],
+      "base": ["base"],
+      "base/*": ["base/*"],
+      "components": ["components"],
+      "components/*": ["components/*"],
+      "constants": ["constants"],
+      "constants/*": ["constants/*"],
+      "hooks": ["hooks"],
+      "hooks/*": ["hooks/*"],
+      "modules": ["modules"],
+      "modules/*": ["modules/*"],
+      "navigation": ["navigation"],
+      "navigation/*": ["navigation/*"],
+      "screens": ["screens"],
+      "screens/*": ["screens/*"],
+      "theme": ["theme"],
+      "theme/*": ["theme/*"]
+    }
+  }
+}
