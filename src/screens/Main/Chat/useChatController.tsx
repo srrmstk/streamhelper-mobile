@@ -17,7 +17,8 @@ import { TSelectedMessage } from './types';
 const BOTTOMSCROLL_THRESHOLD = 16;
 
 export const useChatController = () => {
-  const { authStore, chatStore, userStore } = useRootStore();
+  const { authStore, chatStore, userStore, donationAlertsAuthStore } =
+    useRootStore();
   const navigation = useAppNavigation();
   const { ref, open } = useBottomSheetWrapper();
   const flatListRef = useRef<FlatList<ChatMessage>>(null);
@@ -39,6 +40,7 @@ export const useChatController = () => {
 
   const handleLogout = async () => {
     const isLoggedOut = await authStore.logout();
+    await donationAlertsAuthStore.logout();
     chatStore.clearMessages();
 
     if (isLoggedOut) {

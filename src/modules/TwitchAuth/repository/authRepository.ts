@@ -1,6 +1,8 @@
-import AbstractRepository from '../../../base/AbstractRepository';
 import { NativeModules } from 'react-native';
-import { CONFIG } from '../../../constants/config';
+
+import AbstractRepository from 'base/AbstractRepository';
+import { CONFIG } from 'constants/config';
+
 import TwitchAxios from '../client';
 
 const IntentModule = NativeModules.IntentModule;

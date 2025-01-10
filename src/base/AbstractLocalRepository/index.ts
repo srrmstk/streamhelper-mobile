@@ -1,6 +1,6 @@
 import IAbstractLocalClient from '../AbstractLocalClient/types';
-import AsyncStorageClient from '../LocalStorageClient';
 import EncryptedStorageClient from '../EncryptedStorageClient';
+import AsyncStorageClient from '../LocalStorageClient';
 import { ELocalClientTypes } from './types';
 
 export default abstract class AbstractLocalRepository {
