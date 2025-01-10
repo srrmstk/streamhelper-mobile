@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { AppButton, AppText } from 'components';
 import { LOCALES } from 'constants/locales';
 import { observer } from 'mobx-react';
@@ -6,7 +8,8 @@ import { Container } from './styled';
 import { useAlertsController } from './useAlertsController';
 
 export const AlertScreen = observer(() => {
-  const { handleLogin, isLoading, isLoggedIn } = useAlertsController();
+  const { handleLogin, isLoading, isLoggedIn, getLatestAlerts } =
+    useAlertsController();
 
   return (
     <Container>
@@ -17,7 +20,14 @@ export const AlertScreen = observer(() => {
           isLoading={isLoading}
         />
       ) : (
-        <AppText>Alerts</AppText>
+        <>
+          <AppText>Alerts</AppText>
+          <AppButton
+            title={'Get latest alerts'}
+            onPress={getLatestAlerts}
+            isLoading={isLoading}
+          />
+        </>
       )}
     </Container>
   );

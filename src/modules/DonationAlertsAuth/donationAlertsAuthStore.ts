@@ -65,4 +65,8 @@ export class DonationAlertsAuthStore {
   setAccessToken = (value: string | null) => {
     this.accessToken = value;
   };
+
+  getDonations = async () => {
+    await this.authService.getDonations();
+  };
 }

@@ -10,4 +10,9 @@ export class AuthService {
     const result = await this.repository.auth(uri);
     return result.split('#access_token=')[1].split('&')[0];
   };
+
+  getDonations = async () => {
+    const result = await this.repository.getDonations();
+    console.log(result.data);
+  };
 }

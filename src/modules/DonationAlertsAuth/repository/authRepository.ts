@@ -16,4 +16,10 @@ export class AuthRepository extends AbstractRepository<
   auth = (uri: string): Promise<string> => {
     return IntentModule.openIntent(uri);
   };
+
+  getDonations = (): Promise<any> => {
+    return this.client.get({
+      url: '/alerts/donations',
+    });
+  };
 }

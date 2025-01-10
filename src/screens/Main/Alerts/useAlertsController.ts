@@ -24,5 +24,6 @@ export const useAlertsController = () => {
     handleLogin,
     isLoading: donationAlertsAuthStore.loadingModel.isLoading,
     isLoggedIn: donationAlertsAuthStore.accessToken,
+    getLatestAlerts: donationAlertsAuthStore.getDonations,
   };
 };
