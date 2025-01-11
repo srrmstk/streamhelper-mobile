@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
 import { FlatList, ListRenderItem, RefreshControl } from 'react-native';
 
-import { AppButton } from 'components';
-import { BottomSheet } from 'components/BottomSheet';
+import { AppButton, BottomSheet } from 'components';
 import { LOCALES } from 'constants/locales';
 import { observer } from 'mobx-react';
 import { ChatMessage } from 'modules/Chat/models/chatMessage';
@@ -33,14 +32,13 @@ export const ChatScreen = observer(() => {
     onEndReached,
     onScroll,
     isAtBottom,
+    keyExtractor,
   } = useChatController();
 
   const renderItem: ListRenderItem<ChatMessage> = useCallback(
     ({ item }) => <Message item={item} onMessagePress={onMessagePress} />,
     [onMessagePress],
   );
-
-  const keyExtractor = (item: ChatMessage) => `${item.id}`;
 
   return (
     <Container>

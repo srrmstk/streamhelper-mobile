@@ -91,6 +91,8 @@ export const useChatController = () => {
     }
   };
 
+  const keyExtractor = (item: ChatMessage) => `${item.id}`;
+
   return {
     isLoading: chatStore.loadingModel.isLoading,
     handleLogout,
@@ -105,5 +107,6 @@ export const useChatController = () => {
     onEndReached,
     onScroll,
     isAtBottom,
+    keyExtractor,
   };
 };
