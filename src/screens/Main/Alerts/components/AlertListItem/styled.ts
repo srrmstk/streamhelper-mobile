@@ -8,19 +8,18 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   flex-direction: row;
-  gap: 16px;
+  border-bottom-color: ${EColors.Gray};
 `;
 
 export const Author = styled(AppText)`
+  flex: 1;
   font-weight: bold;
-  margin-bottom: 4px;
 `;
 
 export const Amount = styled(AppText)`
-  margin-bottom: 4px;
   color: ${EColors.Donation};
 `;
 
 export const Message = styled(AppText)`
-  margin-bottom: 4px;
+  margin-top: 4px;
 `;

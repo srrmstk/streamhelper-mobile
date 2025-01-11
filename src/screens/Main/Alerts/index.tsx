@@ -7,7 +7,7 @@ import { observer } from 'mobx-react';
 import { AlertModel } from 'modules/Alerts/models/alertModel';
 
 import { AlertListItem } from './components/AlertListItem';
-import { Container } from './styled';
+import { Container, Separator } from './styled';
 import { useAlertsController } from './useAlertsController';
 
 export const AlertScreen = observer(() => {
@@ -46,7 +46,7 @@ export const AlertScreen = observer(() => {
         refreshControl={
           <RefreshControl refreshing={isLoading} onRefresh={getLatestAlerts} />
         }
-        // ItemSeparatorComponent={() => <Separator />}
+        ItemSeparatorComponent={() => <Separator />}
       />
     </Container>
   );

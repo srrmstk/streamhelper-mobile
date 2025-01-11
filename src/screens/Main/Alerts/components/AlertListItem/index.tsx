@@ -23,7 +23,7 @@ export const AlertListItem: FC<TAlertListItemProps> = memo(
     return (
       <Container>
         <Header>
-          <Author>{item.userName ?? 'Anonymous'}</Author>
+          <Author numberOfLines={1}>{item.userName ?? 'Anonymous'}</Author>
           <Amount>{donationAmount}</Amount>
         </Header>
         {item.message && <Message>{item.message}</Message>}
