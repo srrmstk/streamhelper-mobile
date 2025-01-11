@@ -1,5 +1,4 @@
 import { FC, memo } from 'react';
-import { ViewProps } from 'react-native';
 
 import { ChatMessage } from 'modules/Chat/models/chatMessage';
 
@@ -9,7 +8,7 @@ import { useMessageContentController } from './useMessageContentController';
 type TMessageProps = {
   item: ChatMessage;
   onMessagePress: (item: ChatMessage) => void;
-} & Pick<ViewProps, 'onLayout'>;
+};
 
 const MessageContent = ({ message }: { message: ChatMessage }) => {
   const { formatChatMessage } = useMessageContentController();
@@ -17,10 +16,9 @@ const MessageContent = ({ message }: { message: ChatMessage }) => {
 };
 
 export const Message: FC<TMessageProps> = memo(
-  ({ item, onMessagePress, onLayout }) => {
+  ({ item, onMessagePress }) => {
     return (
       <MessageContainer
-        onLayout={onLayout}
         onPress={() => onMessagePress(item)}
         isDeleted={item.isDeleted}
       >
