@@ -7,4 +7,5 @@ export enum EColors {
   White = '#FFF',
   Black = '#000',
   Danger = '#DC3545',
+  Donation = '#F57D07',
 }

@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 
 import { useRootStore } from 'hooks/useRootStore';
+import { AlertModel } from 'modules/Alerts/models/alertModel';
 
 import { getDonationAlertsUri } from './helpers';
 
 export const useAlertsController = () => {
-  const { donationAlertsAuthStore } = useRootStore();
+  const { donationAlertsAuthStore, alertsStore } = useRootStore();
   const donationAlertsUri = getDonationAlertsUri();
 
   const handleLogin = async () => {
@@ -14,16 +15,24 @@ export const useAlertsController = () => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      await donationAlertsAuthStore.checkAuth();
+      const res = await donationAlertsAuthStore.checkAuth();
+
+      if (res) {
+        await alertsStore.getDonations();
+      }
     };
 
     checkAuth();
   }, [handleLogin]);
 
+  const keyExtractor = (item: AlertModel) => `${item.id}`;
+
   return {
     handleLogin,
     isLoading: donationAlertsAuthStore.loadingModel.isLoading,
     isLoggedIn: donationAlertsAuthStore.accessToken,
-    getLatestAlerts: donationAlertsAuthStore.getDonations,
+    getLatestAlerts: alertsStore.getDonations,
+    alerts: alertsStore.alerts,
+    keyExtractor,
   };
 };
