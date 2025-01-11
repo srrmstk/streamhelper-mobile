@@ -4,7 +4,6 @@ import FastImage from 'react-native-fast-image';
 import styled from 'styled-components/native';
 
 export const Message = styled.View`
-  flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
 `;
@@ -27,7 +26,6 @@ export const TwitchEmoji = styled(FastImage)<{ height: number; width: number }>`
 `;
 
 export const MessageContainer = styled.TouchableOpacity<{ isDeleted: boolean }>`
-  flex: 1;
   padding: 8px 16px;
   opacity: ${({ isDeleted }) => (isDeleted ? 0.4 : 1)};
 `;

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { ViewProps } from 'react-native';
 
 import { ChatMessage } from 'modules/Chat/models/chatMessage';
@@ -16,19 +16,18 @@ const MessageContent = ({ message }: { message: ChatMessage }) => {
   return formatChatMessage(message);
 };
 
-export const Message: FC<TMessageProps> = ({
-  item,
-  onMessagePress,
-  onLayout,
-}) => {
-  return (
-    <MessageContainer
-      onLayout={onLayout}
-      onPress={() => onMessagePress(item)}
-      isDeleted={item.isDeleted}
-    >
-      <Author color={item.color}>{item.author}</Author>
-      <MessageContent message={item} />
-    </MessageContainer>
-  );
-};
+export const Message: FC<TMessageProps> = memo(
+  ({ item, onMessagePress, onLayout }) => {
+    return (
+      <MessageContainer
+        onLayout={onLayout}
+        onPress={() => onMessagePress(item)}
+        isDeleted={item.isDeleted}
+      >
+        <Author color={item.color}>{item.author}</Author>
+        <MessageContent message={item} />
+      </MessageContainer>
+    );
+  },
+  (prevProps, nextProps) => prevProps.item.id === nextProps.item.id,
+);
