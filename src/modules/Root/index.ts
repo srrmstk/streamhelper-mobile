@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { AlertsStore } from 'modules/Alerts/alertsStore';
 import { ChatStore } from 'modules/Chat/chatStore';
 import { DonationAlertsAuthStore } from 'modules/DonationAlertsAuth/donationAlertsAuthStore';
 import { EmojiStore } from 'modules/Emoji/emojiStore';
@@ -12,6 +13,7 @@ class RootStore {
   chatStore = new ChatStore(this.userStore);
   emojiStore = new EmojiStore();
   donationAlertsAuthStore = new DonationAlertsAuthStore();
+  alertsStore = new AlertsStore();
 }
 
 export const rootStore = new RootStore();
