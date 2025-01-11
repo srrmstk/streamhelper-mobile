@@ -21,4 +21,5 @@ export const LOCALES = {
   Unban: i18next.t('unban'),
   Timeout: i18next.t('timeout'),
   ChatPaused: i18next.t('chatPaused'),
+  AlertsLoadError: i18next.t('alertsLoadError'),
 };

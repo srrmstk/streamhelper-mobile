@@ -1,4 +1,5 @@
 import { LoadingModel } from 'base/LoadingModel';
+import { LOCALES } from 'constants/locales';
 import { makeAutoObservable } from 'mobx';
 import { ToastService } from 'modules/Toast/toastService';
 
@@ -28,8 +29,7 @@ export class AlertsStore {
       this.setAlerts(alerts);
     } catch (error) {
       this.toastService.showErrorToast({
-        title: 'Error',
-        description: 'Error while fetching donations',
+        description: LOCALES.AlertsLoadError,
       });
     } finally {
       this.loadingModel.setIsLoading(false);

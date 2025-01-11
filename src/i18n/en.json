@@ -20,6 +20,7 @@
     "ban": "Ban",
     "unban": "Unban",
     "timeout": "Timeout",
-    "chatPaused": "Chat paused"
+    "chatPaused": "Chat paused",
+    "alertsLoadError": "Can't load alerts"
   }
 }
