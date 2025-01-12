@@ -7,6 +7,6 @@ export default class TokenLocalRepository extends AbstractLocalRepository {
   }
 
   tableName(): string {
-    return 'accessToken';
+    return 'donationAlertsAccessToken';
   }
 }

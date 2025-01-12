@@ -1,10 +1,10 @@
 import AbstractRepository from 'base/AbstractRepository';
 
-import TwitchAxios from '../client';
+import DonationAlertsAxiosClient from '../client/index';
 
 export class TokenApiRepository extends AbstractRepository {
   constructor() {
-    super(TwitchAxios);
+    super(DonationAlertsAxiosClient);
   }
 
   setAccessToken = (token: string) => {
