@@ -4,6 +4,7 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "baseUrl": "./src",
+    "types": ["@types/styled-components-react-native"],
     "paths": {
       "*": ["*"],
       "base": ["base"],

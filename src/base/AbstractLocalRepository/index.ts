@@ -25,10 +25,12 @@ export default abstract class AbstractLocalRepository {
     return await this.client.get(this.tableName());
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   set = async (data: any) => {
     return await this.client.set(this.tableName(), data);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   update = async (data: any) => {
     return await this.client.update(this.tableName(), data);
   };

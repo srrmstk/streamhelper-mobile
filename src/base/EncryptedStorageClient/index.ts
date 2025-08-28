@@ -1,21 +1,25 @@
-import EncryptedStorage from 'react-native-encrypted-storage';
+import { MMKV } from 'react-native-mmkv';
 
 import AbstractLocalClient from '../AbstractLocalClient';
 
 export default class EncryptedStorageClient implements AbstractLocalClient {
-  get = async (tableName: string) => {
-    const data = await EncryptedStorage.getItem(tableName);
+  storage = new MMKV();
+
+  get = (tableName: string) => {
+    const data = this.storage.getString(tableName);
     return data ? JSON.parse(data) : null;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   set = async (tableName: string, data: any) => {
-    return EncryptedStorage.setItem(tableName, JSON.stringify(data));
+    return this.storage.set(tableName, JSON.stringify(data));
   };
 
   removeAll = async (tableName: string) => {
-    return EncryptedStorage.removeItem(tableName);
+    return this.storage.delete(tableName);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   update = async (tableName: string, data: any) => {
     let res = await this.get(tableName);
 

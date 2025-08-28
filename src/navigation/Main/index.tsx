@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { AlertScreen } from 'screens/Main/Alerts';
 import { ChatScreen } from 'screens/Main/Chat';
 import { RaidScreen } from 'screens/Main/Raid';
@@ -9,6 +9,8 @@ import { EMainRoutes } from './routes';
 import { TMainNavigator } from './types';
 
 const Tab = createBottomTabNavigator<TMainNavigator>();
+
+const Icon = MaterialIcon as unknown as React.ElementType;
 
 export const MainNavigator: React.FC = () => (
   <Tab.Navigator screenOptions={{ headerShown: false }}>
